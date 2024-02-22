@@ -21,7 +21,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/TheDanielTp/Tetris">
-    <img src="logo.png" alt="Logo" width="120" height="120">
+    <img src="logo.png" alt="Logo" width="173" height="120">
   </a>
 <h3 align="center">Tetris Game</h3>
 
