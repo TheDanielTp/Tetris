@@ -1,9 +1,7 @@
-# Tetris Game
+# Tetris Clone — C++ Edition
 <!-- Improved compatibility of Back to Top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
 <!--
-
-
 
 <!-- PROJECT SHIELDS -->
 <!--
@@ -46,22 +44,34 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#requirements">Requirements</a></li>
+      </ul>
+      <ul>
+        <li><a href="#how-to-run">How to Run</a></li>
       </ul>
     </li>
-    <li><a href="#gameplay">Gameplay</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li>
+        <a href="#gameplay">Gameplay</a></li>
+        <ul>
+        <li><a href="#controls">Controls</a></li>
+        </ul>
+    <li>
+        <a href="#future-upgrades">Future Upgrades</a></li>
+    <li>
+        <a href="#contributing">Contributing</a></li>
+    <li>
+        <a href="#license">License</a></li>
+    <li>
+        <a href="#contact">Contact</a></li>
   </ol>
 </details>
 
 
 
 <!-- ABOUT THE PROJECT -->
-## 🔴 About The Project
+## 🎨 About The Project
 
-This is an open-source Tetris game made using c++ for my mid-term project. Feel free to use the source code and edit it however you want.
+This is an open-source **Tetris** game made using C++. This version features theming, difficulty levels, custom board size, and live leaderboard tracking. — all in a single `.cpp` file with no external dependencies.
 
 ### Built With 
 
@@ -72,49 +82,64 @@ This is an open-source Tetris game made using c++ for my mid-term project. Feel 
 
 
 <!-- GETTING STARTED -->
-## 🟠 Getting Started
+## 🧩 Getting Started
 
 Feel free to download the source code of the project and run it via your own compiler. You can also download the .exe file and run it to play the game via your own terminal. And don't forget to contribute if you have any ideas on how to make the game better.
 
+### Requirements
+- **Windows OS**
+- **C++ compiler** (tested with MSVC & g++)
+- Terminal that supports `SetConsoleTextAttribute` and colors.
 
-### Installation
 
-1. Download the source code from [Here](https://github.com/TheDanielTp/Tetris/archive/refs/heads/main.zip)
-2. Use your preferred compiler to compile the code. If you're using windows cmd, use the following command.
-   ```sh
-   gcc Tetris.cpp -o Tetris.exe
-   ```
-3. To run the game, simply open the .exe file created. If you're using windows cmd, use the following command.
-   ```sh
-   Tetris.exe
-   ```
-4. Enjoy the Game.
+### How to Run
+
+1. **Clone the repo:**
+   ```bash
+   git clone https://github.com/TheDanielTp/Tetris-Clone
+
+2. **Compile the code:**
+    ```bash
+    g++ -o Tetris.exe Tetris.cpp -std=c++11
+    ```
+   Or if using Visual Studio:
+   - Open as a .cpp project and compile.
+
+3. **Run it:**
 
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
 
 <!-- USAGE EXAMPLES -->
-## 🟡 Gameplay
+## 🕹️ Gameplay
 
-1. Run the game as instructed above using terminal or by double clicking the .exe file.
-2. In the main menu, use any key to start a new game.
-   - Use '2' key to open the leaderboard, and '3' key to exit the game.
-3. In the themes menu, choose your preferred theme using the instructed keys.
-   - Use any key to choose the default theme. Use '2' key for Blue-Green theme and '3' key for Orange-Red theme.
-4. Enter your name
-5. Use WASD or Arrow keys to move the numbers in the directions.
-6. The Goal is to merge numbers until you reach Tetris.
-   - You can still continue to play the game after reaching Tetris.
+Run the game as instructed above using terminal or by double clicking the .exe file.
+
+### Controls
+| Key   | Action       |
+| ----- | ------------ |
+| `A`   | Move left    |
+| `D`   | Move right   |
+| `S`   | Move down    |
+| `W`   | Rotate piece |
+| `ESC` | Pause game   |
 
 _For more instructions to play, please refer to [this link](https://www.wikihow.com/Beat-Tetris)_
 
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
+## 🚀 Future Upgrades
+- Ghost piece preview
+- Hold piece functionality
+- Multiplayer over LAN
+- SDL or SFML graphical version
+- Music & SFX
+- Cross-platform support (remove Windows-only APIs)
 
-
+<p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
 <!-- CONTRIBUTING -->
-## 🟢 Contributing
+## 🧱 Contributing
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
@@ -132,7 +157,7 @@ Don't forget to give the project a star! Thanks again!
 
 
 <!-- LICENSE -->
-## 🔵 License
+## 📄 License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
@@ -141,7 +166,7 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 
 
 <!-- CONTACT -->
-## 🟣 Contact
+## ☎️ Contact
 
 My Email - prof.danial4@gmail.com
 
