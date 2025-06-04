@@ -18,8 +18,8 @@
 <!-- PROJECT LOGO -->
 <br />
 <div align="center">
-  <a href="https://github.com/TheDanielTp/Tetris-Clone/blob/main/logo.jpg">
-    <img src="/logo.png" alt="Logo" width="200" height="120">
+  <a href="https://github.com/TheDanielTp/Tetris-Clone/blob/main/Logo.png">
+    <img src="/Logo.png" alt="Logo" width="200" height="200">
   </a>
 <h3 align="center">Tetris Game</h3>
 
