@@ -586,110 +586,101 @@ int SelectPiece(int size, int piece)
     return Piece;
 }
 
-void DisplayBoardDefault(int size, int nextpiece)
-{
+void RenderNextPieceLine(int nextpiece, int line) {
+    string block = "\u2588";
+    string reset = "\033[0m";
+    switch (nextpiece) {
+        case 0:  //O piece (yellow)
+            if (line == 0 || line == 1)
+                cout << "\033[38;5;226m" << block << block << reset;
+            break;
+        case 1:  //I piece (cyan)
+            if (line >= 0 && line <= 3)
+                cout << "\033[38;5;51m" << block << reset;
+            break;
+        case 2:  //L piece (orange)
+            if (line == 0) cout << "\033[38;5;208m" << block << block << block << reset;
+            if (line == 1) cout << "\033[38;5;208m" << block << reset;
+            break;
+        case 3:  //J piece (blue)
+            if (line == 0) cout << "\033[38;5;21m" << block << block << block << reset;
+            if (line == 1) cout << "  \033[38;5;21m" << block << reset;
+            break;
+        case 4:  //S piece (green)
+            if (line == 0) cout << "\033[38;5;46m" << block << block << reset;
+            if (line == 1) cout << " \033[38;5;46m" << block << block << reset;
+            break;
+        case 5:  //Z piece (red)
+            if (line == 0) cout << " \033[38;5;196m" << block << block << reset;
+            if (line == 1) cout << "\033[38;5;196m" << block << block << reset;
+            break;
+        case 6:  //T piece (purple)
+            if (line == 0) cout << "\033[38;5;129m" << block << block << block << reset;
+            if (line == 1) cout << " \033[38;5;129m" << block << reset;
+            break;
+        default:
+            break;
+    }
+}
+
+
+void DisplayBoardDefault(int size, int nextpiece) {
     ClearScreen();
     SetCursorPosition(0, 0);
 
-    for (int i = 3; i < size * 2 + 1; i++)
-    {
-        for (int j = 0; j < size * 2 + 1; j++)
-        {
-            if (Board[i][j] == '0'){
-                cout << "\u2591";
-            }
-            else
-            {
-                if(Board[i][j] == 's'  || Board[i][j] == 'S' || Board[i][j] == 'q')
-                    cout << "\033[38;5;226m\u2588\033[37m";
+    const string resetColor = "\033[0m";
+    const string borderColor = "\033[38;5;240m";
+    const string blockLight = "\u2591";
+    const string blockFull = "\u2588";
 
-                else if(Board[i][j] == 'n'  || Board[i][j] == 'N' || Board[i][j] == 'o')
-                    cout << "\033[38;5;46m\u2588\033[37m";
+    //Top border
+    cout << borderColor << "╔";
+    for (int j = 0; j < size * 2 + 1; ++j) cout << "═";
+    cout << "╗" << resetColor << "\n";
 
-                else if(Board[i][j] == 'j'  || Board[i][j] == 'J' || Board[i][j] == 'g')
-                    cout << "\033[38;5;21m\u2588\033[37m";
+    //Board
+    for (int i = 3; i < size * 2 + 1; i++) {
+        cout << borderColor << "║" << resetColor;
+        for (int j = 0; j < size * 2 + 1; j++) {
+            char cell = Board[i][j];
+            string colorBlock;
 
-                else if(Board[i][j] == 'm'  || Board[i][j] == 'M' || Board[i][j] == 'p')
-                    cout << "\033[38;5;196m\u2588\033[37m";
+            switch (cell) {
+                case '0': colorBlock = blockLight; break;
+                case 's': case 'S': case 'q': colorBlock = "\033[38;5;226m" + blockFull + resetColor; break;
+                case 'n': case 'N': case 'o': colorBlock = "\033[38;5;46m" + blockFull + resetColor; break;
+                case 'j': case 'J': case 'g': colorBlock = "\033[38;5;21m" + blockFull + resetColor; break;
+                case 'm': case 'M': case 'p': colorBlock = "\033[38;5;196m" + blockFull + resetColor; break;
+                case 't': case 'T': case 'x': colorBlock = "\033[38;5;129m" + blockFull + resetColor; break;
+                case 'i': case 'I': case 'e': colorBlock = "\033[38;5;51m" + blockFull + resetColor; break;
+                case 'l': case 'L': case 'k': colorBlock = "\033[38;5;208m" + blockFull + resetColor; break;
+                default:  colorBlock = " "; break;
+            }
 
-                else if(Board[i][j] == 't'  || Board[i][j] == 'T' || Board[i][j] == 'x')
-                    cout << "\033[38;5;129m\u2588\033[37m";
+            cout << colorBlock;
+        }
 
-                else if(Board[i][j] == 'i'  || Board[i][j] == 'I' || Board[i][j] == 'e')
-                    cout << "\033[38;5;51m\u2588\033[37m";
+        cout << borderColor << "║" << resetColor;
 
-                else if(Board[i][j] == 'l'  || Board[i][j] == 'L' || Board[i][j] == 'k')
-                    cout << "\033[38;5;208m\u2588\033[37m";
-            }
+        //Render next piece next to board
+        cout << "\t";
+        if (i == size - 2) cout << "Next:";
+        else if (i >= size && i <= size + 3) {
+            RenderNextPieceLine(nextpiece, i - size);
         }
-        if (nextpiece == 0){
-            if (i == size){
-                cout << "\t\t\033[38;5;226m\u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t\t\033[38;5;226m\u2588\u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 1){
-            if (i == size - 1){
-                cout << "\t\t\033[38;5;51m\u2588\033[37m";
-            }
-            if (i == size){
-                cout << "\t\t\033[38;5;51m\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t\t\033[38;5;51m\u2588\033[37m";
-            }
-            if (i == size + 2){
-                cout << "\t\t\033[38;5;51m\u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 2){
-            if (i == size){
-                cout << "\t\t\033[38;5;208m\u2588\u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t\t\033[38;5;208m\u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 3){
-            if (i == size){
-                cout << "\t\t\033[38;5;21m\u2588\u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t\t\033[38;5;21m  \u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 4){
-            if (i == size){
-                cout << "\t     \033[38;5;46m\u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t     \033[38;5;46m \u2588\u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 5){
-            if (i == size){
-                cout << "\t     \033[38;5;196m \u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t     \033[38;5;196m\u2588\u2588\033[37m";
-            }
-        }
-        else if (nextpiece == 6){
-            if (i == size){
-                cout << "\t     \033[38;5;129m\u2588\u2588\u2588\033[37m";
-            }
-            if (i == size + 1){
-                cout << "\t     \033[38;5;129m \u2588\033[37m";
-            }
-        }
-        cout << endl;
+
+        cout << "\n";
     }
 
-    cout << "\t\n\n\n\nscore: " << newPlayer[Play].score;
-    cout << "\t\n\n\n\ntimer: " << newPlayer[Play].time << "seconds";
-    cout << "\t\n\n\n\nplay: " << Play;
+    //Bottom border
+    cout << borderColor << "╚";
+    for (int j = 0; j < size * 2 + 1; ++j) cout << "═";
+    cout << "╝" << resetColor << "\n";
+
+    //Stats
+    cout << "\nScore : " << newPlayer[Play].score;
+    cout << "\nTime  : " << newPlayer[Play].time << " seconds";
+    cout << "\nPlayer: " << Play << "\n";
 }
 
 void DisplayBoardRed(int size)
