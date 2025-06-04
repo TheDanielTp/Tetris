@@ -143,7 +143,7 @@ _For more instructions to play, please refer to [this link](https://www.wikihow.
 
 Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+If you have a suggestion that would make this better, please fork the repository and create a pull request. You can also simply open an issue with the tag "enhancement".
 Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
@@ -168,9 +168,9 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## ☎️ Contact
 
-My Email - prof.danial4@gmail.com
+My Email - [prof.danial4@gmail.com](mailto:prof.danial4@gmail.com)
 
-Project Link: [https://github.com/TheDanielTp/Tetris](https://github.com/TheDanielTp/Tetris)
+Project Link: [https://github.com/TheDanielTp/Tetris-Clone](https://github.com/TheDanielTp/Tetris-Clone)
 
 <p align="right">(<a href="#readme-top">Back to Top</a>)</p>
 
